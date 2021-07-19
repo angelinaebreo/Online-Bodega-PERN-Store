@@ -28,6 +28,7 @@ app.get("/test", async (req, res) => {
   }
 });
 
+console.log("Hello world")
 /////////////////////////////////////
 // REMOVE AFTER SUCCESSFUL DEPLOYMENT
 /////////////////////////////////////
