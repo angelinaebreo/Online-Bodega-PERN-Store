@@ -11,7 +11,7 @@ app.use(express.json()); // Parse incoming JSON
 
 // ROUTES
 app.get("/", (req, res) => {
-  res.send("Hello, world!!!");
+  res.send("Hello, world!");
 });
 
 /////////////////////////////////////
@@ -28,7 +28,7 @@ app.get("/test", async (req, res) => {
   }
 });
 
-console.log("Hello world")
+
 /////////////////////////////////////
 // REMOVE AFTER SUCCESSFUL DEPLOYMENT
 /////////////////////////////////////
