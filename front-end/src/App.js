@@ -4,8 +4,10 @@ import { apiURL } from "./util/apiURL.js";
 const API = apiURL();
 
 function App() {
+
   const [days, setDays] = useState([]);
   useEffect(() => {
+    console.log("testing")
     axios
       .get(`${API}/test`)
       .then(
