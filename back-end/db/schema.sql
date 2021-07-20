@@ -1,6 +1,14 @@
-DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS bodega;
+--CREATE DATABASE bodega;
 
-CREATE TABLE test (
+-- \c bodega;
+
+CREATE TABLE bodega (
     id SERIAL PRIMARY KEY, 
-    name TEXT
+    name TEXT,
+    price TEXT,
+    category TEXT,
+    is_popular BOOLEAN,
+    img_link TEXT,
+    reviews TEXT
 );
