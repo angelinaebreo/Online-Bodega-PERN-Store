@@ -35,7 +35,7 @@ body,
 }
 
 .banner-item:hover {
-  transform: scale(1.5);
+  transform: scale(1.25);
   cursor: pointer;
 }
 
@@ -73,7 +73,7 @@ nav ul {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   font-weight: 700;
   letter-spacing: 0.1rem;
   transform: rotate(-180deg);
@@ -159,6 +159,10 @@ h1 {
   #cat-pic{
     width: 175px;
   }
+
+  .banner-item:hover {
+    transform: scale(1.10)          
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -179,15 +183,16 @@ h1 {
   }
 
   .nav-links {
-    writing-mode: horizontal-tb;
-    text-orientation: initial;
+    writing-mode: unset;
+    /* writing-mode: horizontal-tb;
+    text-orientation: initial; */
     letter-spacing: 0.2rem;
     font-size: medium;
   }
 
-  .nav-links:hover {
-    transform: none;
-  }
+   .nav-links:hover {
+    font-size: large;
+  } 
 
   /* #banner{
     height: max-content;
@@ -199,7 +204,8 @@ h1 {
   }
 
   .banner-item:hover {
-    transform: none;
+    /* transform: none; */
+    transform: scale(1.05)    
   }
 
   .first-div{
