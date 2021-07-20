@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { apiURL } from "./util/apiURL.js";
+import CategoryBanner from "./components/CategoryBanner.js";
+import Navbar from "./components/Navbar.js";
+import Header from "./components/Header.js";
+import HomePage from "./components/HomePage.js";
+import "./App.css"
+
 const API = apiURL();
 
 function App() {
@@ -8,7 +14,6 @@ function App() {
 
   const [days, setDays] = useState([]);
   useEffect(() => {
-    console.log("testing")
     axios
       .get(`${API}/test`)
       .then(
@@ -18,12 +23,18 @@ function App() {
       .catch((c) => console.warn("catch", c));
   }, []);
   return (
-    <div>
-      <ul>
+    <div className="app">
+      <CategoryBanner />
+      <Navbar />
+      <Header />
+
+      <HomePage />
+
+      {/* <ul>
         {days.map((day) => (
           <li key={day.name}>{day.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
