@@ -11,7 +11,7 @@ bodega.get("/", async (req, res) => {
 bodega.get("/:id", async (req,res) => {
     const {id} = req.params;
     try {
-        const item = await getAll(id);
+        const item = await getItem(id);
         if (item["id"]) {
             res.json(item);
         }else {
