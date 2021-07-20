@@ -21,3 +21,9 @@ bodega.get("/:id", async (req,res) => {
         res.status(404).json({err: 'not found', message: e});
     }
 });
+
+//create 
+bodega.post("/", async (req,res) => {
+    const item = await newItem(req.body);
+    res.json(item);
+})
