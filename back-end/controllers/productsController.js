@@ -1,3 +1,7 @@
+// DEPENDENCIES
+const express = require("express");
+const products = express.Router({ mergeParams: true });
+
 const db = require("../db/dbConfig.js");
 
 // DELETE
