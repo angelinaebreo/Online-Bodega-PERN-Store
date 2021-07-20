@@ -4,7 +4,7 @@ function CategoryBanner() {
   return (
     <div id="banner">
       <ul id="banner-list">
-        <li className="divider">&#9830;</li>
+        <li className="divider first-div">&#9830;</li>
         <li className="banner-item">BEVERAGES</li>
         <li className="divider">&#9830;</li>
         <li className="banner-item">SNACKS</li>
