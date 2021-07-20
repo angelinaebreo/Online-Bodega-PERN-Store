@@ -1,5 +1,7 @@
 const express = require("express");
-const products = express.Router({ mergeParams: true });
+const products = express.Router();
+
+// const products = express.Router({ mergeParams: true });
 const {
   getAllProducts,
   getProduct,
@@ -8,7 +10,7 @@ const {
   updateProduct,
 } = require("../queries/products.js");
 
-const db = require("../db/dbConfig.js");
+// const db = require("../db/dbConfig.js");
 
 // MIDDLEWARE
 
