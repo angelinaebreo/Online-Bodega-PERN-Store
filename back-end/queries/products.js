@@ -4,6 +4,7 @@ const db = require("../db/dbConfig.js");
 const getAllProducts = async () => {
   try {
     const allProducts = await db.any("SELECT * FROM products");
+    console.log("products queries")
     return allProducts;
   } catch (err) {
     return err;
@@ -42,7 +43,7 @@ const createProduct = async (product) => {
 const deleteProduct = async (id) => {
   try {
     const deletedProduct = await db.one(
-      "DELETE FROM products WHERE id=$1 RETURNING *;",
+      "DELETE FROM products WHERE id=$1 RETURNING *",
       id
     );
     return deletedProduct;
@@ -55,10 +56,9 @@ const deleteProduct = async (id) => {
 const updateProduct = async (id, product) => {
   try {
     const updatedProduct = await db.one(
-      "UPDATE products SET name=$1, price=$2, category=$3, is_popular=$4, img=$5, review=$6 WHERE id=$7 RETURNING *;",
+      "UPDATE products SET name=$1, price=$2, category=$3, is_popular=$4, img=$5, review=$6 WHERE id=$7 RETURNING *",
       [
         product.name,
-        product.price,
         product.price,
         product.category,
         product.is_popular,
@@ -67,6 +67,7 @@ const updateProduct = async (id, product) => {
         id,
       ]
     );
+    return updatedProduct;
   } catch (err) {
     return err;
   }

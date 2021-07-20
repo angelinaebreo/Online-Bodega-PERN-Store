@@ -1,7 +1,6 @@
 const express = require("express");
-const products = express.Router();
+const products = express.Router({ mergeParams: true });
 
-// const products = express.Router({ mergeParams: true });
 const {
   getAllProducts,
   getProduct,
@@ -16,6 +15,8 @@ const {
 
 products.get("/", async (req, res) => {
   const allProducts = await getAllProducts();
+  console.log('request made to /products')
+  console.log(allProducts)
   res.json(allProducts);
 });
 
@@ -57,7 +58,7 @@ products.delete("/:id", async (req, res, next) => {
 
 // update
 products.put("/:id", async (req, res, next) => {
-  const { id } = res.params;
+  const { id } = req.params;
   try {
     const product = await updateProduct(id, req.body);
     res.json(product);
@@ -67,4 +68,5 @@ products.put("/:id", async (req, res, next) => {
 });
 
 // Error handling
+
 module.exports = products;
