@@ -1,5 +1,6 @@
 const express = require("express");
 const products = express.Router({ mergeParams: true });
+
 const {
   getAllProducts,
   getProduct,
@@ -14,6 +15,8 @@ const db = require("../db/dbConfig.js");
 
 products.get("/", async (req, res) => {
   const allProducts = await getAllProducts();
+  console.log('request made to /products')
+  console.log(allProducts)
   res.json(allProducts);
 });
 
@@ -65,4 +68,5 @@ products.put("/:id", async (req, res, next) => {
 });
 
 // Error handling
+
 module.exports = products;

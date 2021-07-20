@@ -29,9 +29,6 @@ const db = require("./db/dbConfig.js");
 //   }
 // });
 
-app.get("/", (req, res) => {
-  res.send("Welcome to online bodega")
-})
 
 app.use("/products", productsController)
 
