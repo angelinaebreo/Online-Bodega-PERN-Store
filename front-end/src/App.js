@@ -22,14 +22,16 @@ function App() {
       )
       .catch((c) => console.warn("catch", c));
   }, []);
+  //yo yo
+  
   return (
     <div className="app">
       <CategoryBanner />
+      <span id="nav-container">
       <Navbar />
       <Header />
-
+      </span>
       <HomePage />
-
       {/* <ul>
         {days.map((day) => (
           <li key={day.name}>{day.name}</li>
