@@ -5,13 +5,16 @@ import CategoryBanner from "./components/CategoryBanner.js";
 import Navbar from "./components/Navbar.js";
 import Header from "./components/Header.js";
 import HomePage from "./components/HomePage.js";
+import Bevs from "./components/Bevs";
+import Snacks from "./components/Snacks";
+import Sandwiches from "./components/Sandwiches";
+import Misc from "./components/Misc"
 import "./App.css"
+import { Route } from "react-router-dom";
 
 const API = apiURL();
 
 function App() {
-  //yesii
-
   const [days, setDays] = useState([]);
   useEffect(() => {
     axios
@@ -22,7 +25,6 @@ function App() {
       )
       .catch((c) => console.warn("catch", c));
   }, []);
-  //yo yo
   
   return (
     <div className="app">
@@ -37,6 +39,12 @@ function App() {
           <li key={day.name}>{day.name}</li>
         ))}
       </ul> */}
+
+
+      {/* <Route path="/products/bevs" component={Bevs} />
+      <Route path="/products/snacks" component={Snacks} />
+      <Route path="/products/sandwiches" component={Sandwiches} />
+      <Route path="/products/misc" component={Misc} /> */}
     </div>
   );
 }
