@@ -9,7 +9,7 @@ const {
   updateProduct,
 } = require("../queries/products.js");
 
-const db = require("../db/dbConfig.js");
+// const db = require("../db/dbConfig.js");
 
 // MIDDLEWARE
 
