@@ -27,3 +27,9 @@ bodega.post("/", async (req,res) => {
     const item = await newItem(req.body);
     res.json(item);
 })
+//delete
+
+//update
+
+
+module.exports = bodega;
