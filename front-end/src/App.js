@@ -22,7 +22,8 @@ function App() {
       )
       .catch((c) => console.warn("catch", c));
   }, []);
-  //yoooo <- fez
+  //yo yo
+  
   return (
     <div className="app">
       <CategoryBanner />
