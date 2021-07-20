@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "db_seed": "psql -U postgres -f db/seed.sql",
-    "db_init": "psql -U postgres -f db/schema.sql"
+    "db_init": "psql -U postgres -f db/schema.sql",
+    "heroku-prebuild": "npm install -f",
+    "heroku-postbuild": "npm run prod"
   },
   "author": "",
   "license": "ISC",
