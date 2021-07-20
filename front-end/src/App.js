@@ -25,7 +25,6 @@ function App() {
       )
       .catch((c) => console.warn("catch", c));
   }, []);
-
   
   return (
     <div className="app">
@@ -35,7 +34,6 @@ function App() {
       <Header />
       </span>
       <HomePage />
-
       {/* <ul>
         {days.map((day) => (
           <li key={day.name}>{day.name}</li>
@@ -43,10 +41,10 @@ function App() {
       </ul> */}
 
 
-      <Route path="/products/bevs" component={Bevs} />
+      {/* <Route path="/products/bevs" component={Bevs} />
       <Route path="/products/snacks" component={Snacks} />
       <Route path="/products/sandwiches" component={Sandwiches} />
-      <Route path="/products/misc" component={Misc} />
+      <Route path="/products/misc" component={Misc} /> */}
     </div>
   );
 }
