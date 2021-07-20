@@ -27,9 +27,10 @@ function App() {
   return (
     <div className="app">
       <CategoryBanner />
+      <span id="nav-container">
       <Navbar />
       <Header />
-
+      </span>
       <HomePage />
       {/* <ul>
         {days.map((day) => (
