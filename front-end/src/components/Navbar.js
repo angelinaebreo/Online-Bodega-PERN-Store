@@ -1,19 +1,21 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav>
       <ul>
         <li>
-          <a href="http://localhost:3000/" className="nav-links">
+          <Link to="/products" className="nav-links">
             WALK THE AISLES
-          </a>
+          </Link>
         </li>
+
         <li className="divider">&#9830;</li>
+
         <li>
-          <a href="http://localhost:3000/" className="nav-links">
+          <Link to="/new" className="nav-links">
             ADD PRODUCT TO INVENTORY
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
