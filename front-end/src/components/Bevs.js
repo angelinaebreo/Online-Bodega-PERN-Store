@@ -4,7 +4,7 @@ import Product from "./Product"
 function Bevs({products}) {
     const bevs = products.filter(product => product.category === "Beverage")
     return (
-        <div>
+        <div className="products-list">
             <ul>
                 {bevs.map(bev => <li key={bev.id}> <Product product={bev}/> </li>)}
             </ul>

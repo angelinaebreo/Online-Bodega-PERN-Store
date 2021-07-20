@@ -10,7 +10,6 @@ import Snacks from "./components/Snacks";
 import Sandwiches from "./components/Sandwiches";
 import Misc from "./components/Misc"
 import "./App.css"
-import { Route } from "react-router-dom";
 
 const API = apiURL();
 
@@ -29,16 +28,9 @@ function App() {
   return (
     <div className="app">
       <CategoryBanner />
-      <span id="nav-container">
       <Navbar />
       <Header />
-      </span>
       <HomePage />
-      {/* <ul>
-        {days.map((day) => (
-          <li key={day.name}>{day.name}</li>
-        ))}
-      </ul> */}
 
 
       {/* <Route path="/products/bevs" component={Bevs} />

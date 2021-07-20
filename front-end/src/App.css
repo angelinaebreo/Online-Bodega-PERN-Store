@@ -121,6 +121,7 @@ h1 {
 }
 
 .door-container {
+  margin-top: 30px;
   display: inline-block;
   position: relative;
 }
@@ -152,6 +153,38 @@ h1 {
   transform: translate(0, 2px);
   transition: all 0.1s ease-in-out;
 }
+
+.products-list{
+width: 80%;
+margin: auto;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-column-gap: 5%;
+grid-row-gap: 20px ;
+}
+
+.product{
+  border: 1px solid green;
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: 2fr 6fr 1fr 2fr 2fr;
+}
+
+.prod-row{
+  display: flex;
+  justify-content: center;
+}
+
+.product-page{
+  width: 80%;
+  height: 100%;
+  border: 1px solid green;
+  border-radius: 8px;
+  margin: auto;
+  display: grid;
+  grid-template-rows: .25fr .50fr .25fr .25fr;
+}
+
 
 @media screen and (max-width: 822px){
   #header{
@@ -261,13 +294,14 @@ h1 {
 
 }
 
-/* @media screen and (max-width: 400px) {
+@media screen and (max-width: 400px) {
   #banner {
-    height: max-content;
+    height: 60px;
 
   }
 
   nav{
-      height: max-content;
+      margin-top: 60px;
+      height: 60px
   }
-} */
+}
