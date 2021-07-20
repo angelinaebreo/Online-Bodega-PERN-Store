@@ -60,7 +60,6 @@ const updateProduct = async (id, product) => {
       [
         product.name,
         product.price,
-        product.price,
         product.category,
         product.is_popular,
         product.img,
@@ -68,6 +67,7 @@ const updateProduct = async (id, product) => {
         id,
       ]
     );
+    return updatedProduct;
   } catch (err) {
     return err;
   }

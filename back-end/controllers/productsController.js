@@ -58,7 +58,7 @@ products.delete("/:id", async (req, res, next) => {
 
 // update
 products.put("/:id", async (req, res, next) => {
-  const { id } = res.params;
+  const { id } = req.params;
   try {
     const product = await updateProduct(id, req.body);
     res.json(product);
