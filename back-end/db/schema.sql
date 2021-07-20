@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS bodega_dev;
+DROP DATABASE IF EXISTS bodega_dev;
 CREATE DATABASE bodega_dev;
 \c bodega_dev;
 
