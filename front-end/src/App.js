@@ -22,6 +22,7 @@ function App() {
       )
       .catch((c) => console.warn("catch", c));
   }, []);
+  //yoooo <- fez
   return (
     <div className="app">
       <CategoryBanner />
@@ -29,7 +30,6 @@ function App() {
       <Header />
 
       <HomePage />
-
       {/* <ul>
         {days.map((day) => (
           <li key={day.name}>{day.name}</li>
