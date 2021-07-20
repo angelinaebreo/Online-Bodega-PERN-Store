@@ -22,7 +22,7 @@ const getItem = async (id) => {
 const newItem = async (item) =>{
     try{
         const newItem = await db.one("INSERT INTO bodega (name, price, category, is_popular, img_link, reviews) VALUES ($1, $2, $3, $4, $5,$6) RETURNING *",
-        [bodega.name, bodega.price, bodega.catergory, bodega.is_popular, bodega.img_link, bodega.reviews]);
+        [item.name, item.price, item.catergory, item.is_popular, item.img_link, item.reviews]);
         return newItem;
     }
     catch (err){

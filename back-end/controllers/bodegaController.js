@@ -4,7 +4,7 @@ const { getAll, getItem, newItem } = require("../queries/bodega")
 
 bodega.get("/", async (req, res) => {
     const allItems = await getAll();
-    res.json(allBookmarks);
+    res.json(allItems);
 });
 
 //show
