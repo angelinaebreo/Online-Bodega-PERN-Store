@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 INSERT INTO products (name, price, category, is_popular, img, review) VALUES
 ('Pepsi', 1.50, 'Beverage', false, 'imglink', 'What is Coca-cola?' ),
 ('Arizona', 1.00, 'Beverage', false, 'imglink', 'Peach flavor is bomb'),
@@ -16,14 +15,3 @@ INSERT INTO products (name, price, category, is_popular, img, review) VALUES
 ('Advil', 1.00, 'Mischellaneous', false, 'imglink', 'Non-drowsy'),
 ('Face Masks Box', 5.00, 'Mischellaneous', false, 'imglink', 'Color Black'),
 ('Lighter', 1.50, 'Mischellaneous', false, 'imglink', 'Fire!' ),
-=======
-
-\c bodega_dev;
-
-INSERT INTO products (name, price, category, is_popular, img, review) VALUES
-('Fanta', 1.50, 'Beverage', true, 'imglink', 'Orange flavor' ),
-('Bacon,Egg, and Cheese', 2.50, 'Sandwhich', true, 'imglink', 'Cheesy and Yummy' ),
-('Doritos', 1.00, 'Snacks', true, 'imglink', 'crunchy' ),
-('lighter', 1.50, 'Mischellaneous', false, 'imglink', 'fire' );
-
->>>>>>> 4cae67bc13d206b2ca97150279ac674f6decdf2b
