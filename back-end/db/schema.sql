@@ -9,7 +9,6 @@ CREATE TABLE products (
     category TEXT, 
     is_popular BOOLEAN, 
     img TEXT
-    -- review TEXT
 );
 
 DROP TABLE IF EXISTS reviews;
@@ -23,4 +22,5 @@ CREATE TABLE reviews (
     CHECK (rating >= 0 AND rating <= 5),
     product_id INTEGER REFERENCES products (id)
     ON DELETE CASCADE
+
 );

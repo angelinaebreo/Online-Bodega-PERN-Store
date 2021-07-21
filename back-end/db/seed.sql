@@ -2,6 +2,7 @@
 \c bodega_dev;
 
 INSERT INTO products (name, price, category, is_popular, img) VALUES
+
 ('Pepsi', 1.50, 'Beverage', false, 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80' ),
 ('Fanta', 1.00, 'Beverage', false, 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFudGF8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60'),
 ('Hot coffee', 1.25, 'Beverage', true, 'https://images.unsplash.com/photo-1598908314732-07113901949e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29mZmVlJTIwdG8lMjBnb3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60'),
@@ -38,3 +39,5 @@ VALUES
 ('14', 'Mary', 'Gum', 'So fresh', 4 ),
 ('15', 'Elijah', 'Face masks',  'Cutest Color', 3 ),
 ('16', 'Tori', 'Lighter', 'My lighter stopped working after two uses!', 1 );
+
+

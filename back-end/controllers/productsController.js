@@ -13,15 +13,56 @@ const {
   updateProduct,
 } = require("../queries/products.js");
 
+const {    ProductNotCreatedError,
+  ValidationError,
+  customErrorHandler } = require("../helper.js")
+
+// const db = require("../db/dbConfig.js");
 const db = require("../db/dbConfig.js");
 
 // MIDDLEWARE
+const validateProduct = (req, res, next) => {
+  console.log(req.body)
+  try {
+    const { name, price, category, is_popular, img } = req.body;
 
+    let isProductValid = true;
+    let errorMsg = "Product request not formatted correctly: ";
+
+    if (typeof name !== "string") {
+      isProductValid = false;
+      errorMsg += "The 'name' field must be of type 'string'";
+    }
+    if (typeof price !== "number") {
+      isProductValid = false;
+      errorMsg += "The 'price' field must be of type 'number'";
+    }
+    if (typeof category !== "string") {
+      isProductValid = false;
+      errorMsg += "The 'category' field must be of type 'string'";
+    }
+    if (typeof is_popular !== "boolean") {
+      isProductValid = false;
+      errorMsg += "The 'is_popular' field must be of type 'boolean'";
+    }
+    if (typeof img !== "string") {
+      isProductValid = false;
+      errorMsg += "The 'img' field must be of type 'string'";
+    }
+    if (isProductValid !== true) {
+      throw new ValidationError(errorMsg);
+    }
+  } catch (e) {
+    next(e);
+  }
+  return next();
+};
+
+
+// index
 products.get("/", async (req, res) => {
   const allProducts = await getAllProducts();
-  console.log('request made to /products')
-  console.log(allProducts)
-  res.json(allProducts);
+  res.status(200).json(allProducts);
 });
 
 //show
@@ -30,7 +71,7 @@ products.get("/:id", async (req, res) => {
   try {
     const product = await getProduct(id);
     if (product.id) {
-      res.json(product);
+      res.status(200).json(product);
     } else {
       throw `NO item found at index: ${id}`;
     }
@@ -39,11 +80,41 @@ products.get("/:id", async (req, res) => {
   }
 });
 
+
+
 //create
-products.post("/", async (req, res, next) => {
+products.post("/", validateProduct, async (req, res, next) => {
+
   try {
     const product = await createProduct(req.body);
-    res.json(product);
+    console.log(product["id"])
+    res.status(200).json(product);
+    // if (product["id"]) {
+    //   res.status(200).json(product);
+      
+    // } else {
+    //   const msg = `Product not addedd to database: ${JSON.stringify(req.body)}`
+    //   throw new ProductNotCreatedError(msg)
+    // }
+  } catch (e) {
+    return next(e);
+  }
+});
+
+
+// update
+products.put("/:id", validateProduct ,async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const product = await updateProduct(id, req.body);
+    console.log(`products id ${product}`)
+    if (product["id"]) {
+
+      res.status(200).json(product);
+    } else {
+      const msg = `Product not added to database: ${JSON.stringify(req.body)}`
+      throw new ProductNotCreatedError(msg)
+    }
   } catch (e) {
     return next(e);
   }
@@ -54,23 +125,20 @@ products.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const deleted = await deleteProduct(id);
-    res.json(deleted);
+    if (deleted.id) {
+
+      res.status(200).json(deleted);
+    } else {
+      const msg = `Product not deleted from database: ${id}`
+      throw new ProductNotCreatedError(msg);
+    }
   } catch (e) {
-    return next(e);
+    next(e)
   }
 });
 
-// update
-products.put("/:id", async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const product = await updateProduct(id, req.body);
-    res.json(product);
-  } catch (e) {
-    return next(e);
-  }
-});
 
 // Error handling
+products.use(customErrorHandler);
 
 module.exports = products;

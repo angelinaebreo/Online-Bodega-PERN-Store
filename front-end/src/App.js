@@ -5,38 +5,85 @@ import CategoryBanner from "./components/CategoryBanner.js";
 import Navbar from "./components/Navbar.js";
 import Header from "./components/Header.js";
 import HomePage from "./components/HomePage.js";
-import "./App.css"
+import Products from './components/Products.js'
+import Bevs from "./components/Bevs";
+import Snacks from "./components/Snacks";
+import Sandwiches from "./components/Sandwiches";
+import Misc from "./components/Misc";
+import { Route, Switch } from "react-router-dom";
+import "./App.css";
+import NewProduct from "./components/NewProduct.js";
+import ProductView from "./components/ProductView.js";
+import EditForm from "./components/EditForm.js";
 
 const API = apiURL();
 
 function App() {
-  //yesii
 
-  const [days, setDays] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${API}/test`)
-      .then(
-        (response) => setDays(response.data),
+  const [products, setProducts] = useState([])
+
+    useEffect(() => {
+    try {
+      axios.get(`${API}/products`).then(
+        (response) => {
+          setProducts(response.data);
+        },
         (error) => console.log("get", error)
-      )
-      .catch((c) => console.warn("catch", c));
+      );
+    } catch (error) {
+      console.warn("catch", error);
+    }
   }, []);
-  //yo yo
-  
+
+  const deleteProduct = () => {
+
+  }
+
+  const addProduct = () => {
+
+  }
+
+  const updateProduct = () => {
+
+  }
+
   return (
     <div className="app">
       <CategoryBanner />
-      <span id="nav-container">
       <Navbar />
       <Header />
-      </span>
-      <HomePage />
-      {/* <ul>
-        {days.map((day) => (
-          <li key={day.name}>{day.name}</li>
-        ))}
-      </ul> */}
+      {/* we're gonna need a swtich here */}
+      <div id="body"> 
+      <Switch>
+        <Route exact path='/'>
+          <HomePage />
+        </Route>
+       
+        <Route path="/products/bevs">
+          <Bevs products={products}/>
+        </Route>
+        <Route path="/products/snacks">
+          <Snacks products={products} />
+        </Route>
+        <Route path="/products/sandwiches">
+          <Sandwiches products={products} />
+        </Route>
+        <Route path="/products/misc">
+          <Misc products={products}/>
+        </Route>
+        <Route path="`products/:id/edit`">
+        <EditForm />
+        </Route>
+        <Route path="/products/:id">
+          <ProductView deleteProduct={deleteProduct}/>
+        </Route>
+        <Route exact path='/products'>
+          <Products products={products} />
+        </Route>
+        <Route path="/new" component={NewProduct}/>
+    
+      </Switch>
+      </div>
     </div>
   );
 }
