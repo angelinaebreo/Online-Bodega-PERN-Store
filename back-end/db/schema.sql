@@ -8,7 +8,7 @@ CREATE TABLE products (
     price DECIMAL(3,2), 
     category TEXT, 
     is_popular BOOLEAN, 
-    img TEXT, 
+    img TEXT
     -- review TEXT
 );
 
