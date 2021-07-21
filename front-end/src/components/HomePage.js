@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import door from"../assets/door.jpg"
 
 function HomePage() {
@@ -6,7 +7,14 @@ function HomePage() {
         <div id="home">
             <div className="door-container">
                 <img src={door} alt="store door" height="500px"/>
-                <button>ENTER</button>
+             
+                    <Link to="/products"> 
+                    <button>
+                    ENTER
+                    </button> 
+                    </Link>
+                   
+        
             </div>           
         </div>
     )
