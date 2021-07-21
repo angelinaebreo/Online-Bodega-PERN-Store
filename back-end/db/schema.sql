@@ -2,7 +2,6 @@ DROP DATABASE IF EXISTS bodega_dev;
 CREATE DATABASE bodega_dev;
 \c bodega_dev;
 
-
 CREATE TABLE products (
     id SERIAL PRIMARY KEY, 
     name TEXT, 
@@ -10,5 +9,18 @@ CREATE TABLE products (
     category TEXT, 
     is_popular BOOLEAN, 
     img TEXT, 
-    review TEXT
+    -- review TEXT
+);
+
+DROP TABLE IF EXISTS reviews;
+
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    reviewer TEXT,
+    product TEXT,
+    review TEXT,
+    rating NUMERIC,
+    CHECK (rating >= 0 AND rating <= 5),
+    bodega_dev INTEGER REFERENCES products (id)
+    ON DELETE CASCADE
 );

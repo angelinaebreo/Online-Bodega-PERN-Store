@@ -1,6 +1,6 @@
 
 const express = require("express");
-const products = express.Router({ mergeParams: true });
+const products = express.Router();
 
 const {
   getAllProducts,
