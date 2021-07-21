@@ -23,14 +23,13 @@ const getProduct = async (id) => {
 const createProduct = async (product) => {
   try {
     const newProduct = await db.one(
-      "INSERT INTO products (name, price, category, is_popular, img, review) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      "INSERT INTO products (name, price, category, is_popular, img) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [
         product.name,
         product.price,
         product.category,
         product.is_popular,
-        product.img,
-        product.review,
+        product.img
       ]
     );
     return newProduct;
@@ -56,15 +55,14 @@ const deleteProduct = async (id) => {
 const updateProduct = async (id, product) => {
   try {
     const updatedProduct = await db.one(
-      "UPDATE products SET name=$1, price=$2, category=$3, is_popular=$4, img=$5, review=$6 WHERE id=$7 RETURNING *",
+      "UPDATE products SET name=$1, price=$2, category=$3, is_popular=$4, img=$5 WHERE id=$6 RETURNING *",
       [
         product.name,
         product.price,
         product.category,
         product.is_popular,
         product.img,
-        product.review,
-        id,
+        id
       ]
     );
     return updatedProduct;
