@@ -9,8 +9,6 @@ const API = apiURL()
 function ProductView({deleteProduct}) {
     const { id } = useParams();
     const [product, setProduct] = useState([])
-
-
     useEffect(() => {
       axios
         .get(`${API}/products/${id}`)
