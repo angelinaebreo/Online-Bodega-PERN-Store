@@ -24,4 +24,4 @@ CREATE TABLE reviews (
     product_id INTEGER REFERENCES products (id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS reviews;
+-- DROP TABLE IF EXISTS reviews;
