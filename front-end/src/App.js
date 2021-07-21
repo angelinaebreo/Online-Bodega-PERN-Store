@@ -8,30 +8,33 @@ import HomePage from "./components/HomePage.js";
 import Bevs from "./components/Bevs";
 import Snacks from "./components/Snacks";
 import Sandwiches from "./components/Sandwiches";
-import Misc from "./components/Misc"
-import "./App.css"
+import Misc from "./components/Misc";
+import "./App.css";
 
 const API = apiURL();
 
 function App() {
-  // const [days, setDays] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API}/test`)
-  //     .then(
-  //       (response) => setDays(response.data),
-  //       (error) => console.log("get", error)
-  //     )
-  //     .catch((c) => console.warn("catch", c));
-  // }, []);
-  
+  const [products, setProducts] = useEffect(() => {
+    try {
+      axios.get(`${API}/products`).then(
+        (response) => {
+          setProducts(response.data);
+        },
+        (error) => console.log("get", error)
+      );
+    } catch (error) {
+      console.warn("catch", error);
+    }
+  }, []);
+
   return (
     <div className="app">
       <CategoryBanner />
       <Navbar />
       <Header />
+      {/* we're gonna need a swtich here */}
+      <Products products={products} />
       <HomePage />
-
 
       {/* <Route path="/products/bevs" component={Bevs} />
       <Route path="/products/snacks" component={Snacks} />
