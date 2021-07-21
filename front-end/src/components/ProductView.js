@@ -23,7 +23,7 @@ function ProductView({deleteProduct}) {
             <p>{product.name}</p>
             <img src={product.img} alt={product.name}/>
             <p>{product.price}</p>
-            <button>Reviews</button>  
+            <Link to={`/products/${id}/reviews`}><button>Reviews</button>  </Link>
             <button onClick={() => deleteProduct(id)}>Delete</button>
             <Link to={`/products/${id}/edit`}> <button>Edit</button></Link>
         </div>
