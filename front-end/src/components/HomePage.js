@@ -7,8 +7,7 @@ function HomePage() {
             <div className="door-container">
                 <img src={door} alt="store door" height="500px"/>
                 <button>ENTER</button>
-            </div>
-           
+            </div>           
         </div>
     )
 }
