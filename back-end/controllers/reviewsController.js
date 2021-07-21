@@ -26,7 +26,7 @@ reviews.get("/:id", async (req,res) => {
         const review = await getReview(id);
         res.status(200).json(review);
     }catch (e) {
-        res.status(404).statusMessage(e);
+        res.status(404).json({ error: "Resource not found.", message: e });
     }
 });
 
@@ -36,7 +36,7 @@ reviews.post('/', async (req, res) => {
         const review = await newReview(req.body);
         res.status(200).json(review);
     }catch (e) {
-        res.status(404).statusMessage(e);
+        res.status(404).json({ error: "Resource not found.", message: e });
     }
 });
 
@@ -47,7 +47,7 @@ reviews.put("/:id", async (req, res) => {
         const updatedReview = await updateReview(id, req.body);
         res.status(200).json(updatedReview);
     }catch (e) {
-        res.status(404).statusMessage(e);
+        res.status(404).json({ error: "Resource not found.", message: e });
     }
 });
 
@@ -58,7 +58,7 @@ reviews.delete("/:id", async (req,res) => {
     const deletedReview = await deleteReview(id);
     res.status(200).json(deletedReview);
     }catch (e) {
-        res.status(404).statusMessage(e);
+        res.status(404).json({ error: "Resource not found.", message: e });
    }
 });
 
