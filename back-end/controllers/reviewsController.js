@@ -20,7 +20,7 @@ reviews.get("/", async (res) => {
     }
 })
 //SHOW
-reviews.get(":/id", async (req,res) => {
+reviews.get("/:id", async (req,res) => {
     try{
         const {id} = req.params;
         const review = await getReview(id);
