@@ -12,7 +12,6 @@ const NewProduct = ({addProduct}) => {
         img: ""
     });
   
-
     // const [name, setName] = ''
     // const [price, setPrice] = ''
     // const [category, setCategory] = ''
