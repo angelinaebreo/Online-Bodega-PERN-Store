@@ -1,3 +1,4 @@
+
 const express = require("express");
 const products = express.Router({ mergeParams: true });
 
@@ -14,6 +15,7 @@ const {    ProductNotCreatedError,
   customErrorHandler } = require("../helper.js")
 
 // const db = require("../db/dbConfig.js");
+const db = require("../db/dbConfig.js");
 
 // MIDDLEWARE
 const validateProduct = (req, res, next) => {
