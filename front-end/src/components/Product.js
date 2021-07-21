@@ -10,7 +10,7 @@ function Product({product}) {
             {product.is_popular ? <p className="prod-row">Best Seller 💫</p> : null}
             <p className="prod-row">${product.price}</p>   
             <Link to={`/products/${product.id}`}> <button className="prod-row">View Product</button>  </Link>
-            <button>Reviews</button>       
+            <Link to={`/products/${product.id}/reviews`}><button>Reviews</button> </Link>      
         </div>
     )
 }

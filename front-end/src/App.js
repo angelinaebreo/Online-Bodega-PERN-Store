@@ -15,6 +15,7 @@ import "./App.css";
 import NewProduct from "./components/NewProduct.js";
 import ProductView from "./components/ProductView.js";
 import EditForm from "./components/EditForm.js";
+import Reviews from "./components/Reviews.js";
 
 const API = apiURL();
 
@@ -71,11 +72,14 @@ function App() {
         <Route path="/products/misc">
           <Misc products={products}/>
         </Route>
-        <Route path="`products/:id/edit`">
+        <Route exact path="/products/:id">
+          <ProductView deleteProduct={deleteProduct}/>
+        </Route>
+        <Route path="/products/:id/edit">
         <EditForm />
         </Route>
-        <Route path="/products/:id">
-          <ProductView deleteProduct={deleteProduct}/>
+        <Route path="/products/:id/reviews">
+          <Reviews />
         </Route>
         <Route exact path='/products'>
           <Products products={products} />

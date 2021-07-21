@@ -21,11 +21,11 @@ function ProductView({deleteProduct}) {
     return (
         <div>
             <p>{product.name}</p>
-            <img src="product.img" alt={product.name}/>
+            <img src={product.img} alt={product.name}/>
             <p>{product.price}</p>
             <button>Reviews</button>  
             <button onClick={() => deleteProduct(id)}>Delete</button>
-            <Link to={`products/${id}/edit`}> <button>Edit</button></Link>
+            <Link to={`/products/${id}/edit`}> <button>Edit</button></Link>
         </div>
     )
 }

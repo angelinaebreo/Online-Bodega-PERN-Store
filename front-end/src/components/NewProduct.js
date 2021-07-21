@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const NewProduct = () => {
+const NewProduct = ({addProduct}) => {
 
   
     const [product, setProduct] = useState({
@@ -42,7 +42,8 @@ const NewProduct = () => {
     // }
     
     const handleSubmit = (e) => {
-
+        e.preventDefault()
+        addProduct(product)
     }
     return (
         <div>
