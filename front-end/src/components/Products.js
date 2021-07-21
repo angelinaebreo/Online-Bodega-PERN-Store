@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import apiURL from "../util/apiURL.js";
 import { useEffect, useState } from "react";
-import product from "./src/components/product.js";
+import Product from "./Product.js";
 
 // const API = apiURL();
-const Products = ({ products }) => {
+function Products  ({ products }) {
   const productList = products.map((elem) => {
     <li key={elem.id}>
       <Product product={elem} />

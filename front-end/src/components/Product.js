@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function Product({product}) {
     return (
         <div className="product">
@@ -12,4 +13,4 @@ function Product({product}) {
     )
 }
 
-export default Product
+export default Product;
