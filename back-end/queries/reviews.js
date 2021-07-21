@@ -19,7 +19,7 @@ const getReview = async (id) => {
 
 const newReview = async (review) => {
     try {
-        const newReview = await db.one(
+        const newR = await db.one(
             `INSERT INTO reviews
             (reviewer, product, content, rating, product_id)
             VALUES 
@@ -34,7 +34,7 @@ const newReview = async (review) => {
                 review.product_id,
             ]
         );
-        return newReview;
+        return newR;
     }catch (e) {
         return e;
     }
@@ -56,7 +56,7 @@ const updateReview = async (id, review) => {
                 id,
             ]
         );
-
+            return updatedReview
     }catch (e) {
         return e;
     }
@@ -66,7 +66,7 @@ const deleteReview = async (id) => {
     try{
         const deletedReview = await db.one(
             `DELETE FROM reviews WHERE id=$1 RETURNING *`,id)
-            return deleteReview;
+            return deletedReview;
     } catch (e) {
         return e;
     }

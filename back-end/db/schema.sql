@@ -18,9 +18,9 @@ CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     reviewer TEXT,
     product TEXT,
-    review TEXT,
+    content TEXT,
     rating NUMERIC,
     CHECK (rating >= 0 AND rating <= 5),
-    bodega_dev INTEGER REFERENCES products (id)
+    product_id INTEGER REFERENCES products (id)
     ON DELETE CASCADE
 );
