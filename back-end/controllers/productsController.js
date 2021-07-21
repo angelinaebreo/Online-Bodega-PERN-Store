@@ -1,6 +1,6 @@
-
 const express = require("express");
 const products = express.Router({ mergeParams: true });
+const reviewsController = require("./reviewsController.js");
 
 const {
   getAllProducts,
@@ -10,16 +10,18 @@ const {
   updateProduct,
 } = require("../queries/products.js");
 
-const {    ProductNotCreatedError,
+const {
+  ProductNotCreatedError,
   ValidationError,
-  customErrorHandler } = require("../helper.js")
+  customErrorHandler,
+} = require("../helper.js");
 
 // const db = require("../db/dbConfig.js");
 const db = require("../db/dbConfig.js");
 
 // MIDDLEWARE
 const validateProduct = (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   try {
     const { name, price, category, is_popular, img } = req.body;
 
@@ -55,7 +57,6 @@ const validateProduct = (req, res, next) => {
   return next();
 };
 
-
 // index
 products.get("/", async (req, res) => {
   const allProducts = await getAllProducts();
@@ -77,18 +78,15 @@ products.get("/:id", async (req, res) => {
   }
 });
 
-
-
 //create
 products.post("/", validateProduct, async (req, res, next) => {
-
   try {
     const product = await createProduct(req.body);
-    console.log(product["id"])
+    console.log(product["id"]);
     res.status(200).json(product);
     // if (product["id"]) {
     //   res.status(200).json(product);
-      
+
     // } else {
     //   const msg = `Product not addedd to database: ${JSON.stringify(req.body)}`
     //   throw new ProductNotCreatedError(msg)
@@ -98,19 +96,17 @@ products.post("/", validateProduct, async (req, res, next) => {
   }
 });
 
-
 // update
-products.put("/:id", validateProduct ,async (req, res, next) => {
+products.put("/:id", validateProduct, async (req, res, next) => {
   const { id } = req.params;
   try {
     const product = await updateProduct(id, req.body);
-    console.log(`products id ${product}`)
+    console.log(`products id ${product}`);
     if (product["id"]) {
-
       res.status(200).json(product);
     } else {
-      const msg = `Product not added to database: ${JSON.stringify(req.body)}`
-      throw new ProductNotCreatedError(msg)
+      const msg = `Product not added to database: ${JSON.stringify(req.body)}`;
+      throw new ProductNotCreatedError(msg);
     }
   } catch (e) {
     return next(e);
@@ -123,17 +119,17 @@ products.delete("/:id", async (req, res, next) => {
   try {
     const deleted = await deleteProduct(id);
     if (deleted.id) {
-
       res.status(200).json(deleted);
     } else {
-      const msg = `Product not deleted from database: ${id}`
+      const msg = `Product not deleted from database: ${id}`;
       throw new ProductNotCreatedError(msg);
     }
   } catch (e) {
-    next(e)
+    next(e);
   }
 });
 
+products.use("/:productId/reviews", reviewsController)
 
 // Error handling
 products.use(customErrorHandler);

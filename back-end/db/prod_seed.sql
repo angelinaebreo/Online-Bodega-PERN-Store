@@ -1,5 +1,5 @@
 
-\c bodega_dev;
+\c d6oc82g8rnpad3;
 
 INSERT INTO products (name, price, category, is_popular, img) VALUES
 ('Pepsi', 1.50, 'Beverage', false, 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'),
@@ -23,8 +23,7 @@ INSERT INTO products (name, price, category, is_popular, img) VALUES
 INSERT INTO reviews
 (product_id, reviewer, content, rating)
 VALUES
-
-('1', 'Sasha', 'Pepsi is life', 3),
+('1', 'Peter', 'What is Coca-cola?', 3),
 ('2', 'Evan',  'Peach flavor is bomb', 3),
 ('3', 'Tom',  'Light and Sweet. duh', 5),
 ('4', 'Juliana', 'Freshly squeezed orange', 5),
@@ -39,20 +38,4 @@ VALUES
 ('13', 'Melanie', 'New York Times', 5),
 ('14', 'Poppy', 'Non-drowsy', 5),
 ('15', 'Francisco', 'Color Black', 5),
-('16', 'Jennifer', 'Fire!', 5),
-('1', 'Randall', 'What is Coca-cola?', 4 ),
-('2', 'Timothy', 'Fanta-stic', 4 ),
-('3', 'Verline', 'Freshly squeeze, yum.', 5),
-('4', 'Tamie', 'My coffee wasnt hot so now it is Iced Coffee', 2 ),
-('5', 'Rupert', 'Go-to breakfast', 5 ),
-('6', 'Arcelia', 'NY must have! But it needs extra cheese', 4 ),
-('7', 'Catherine', 'Who eats a BLT without any mayo??!', 2 ),
-('8', 'Pearline',  'My fave!', 5 ),
-('9', 'Andrew', 'Munchies', 4 ),
-('10', 'Bryan', 'First they are sour...then they are sweet! Ha!', 5 ),
-('11', 'Marvin', 'You are not you when you are hungry & Im still hungry...', 3),
-('12', 'Helen', 'Nacho Cheese haha get it?', 5 ),
-('13', 'Nolen', 'Have to keep with my New York Times', 5 ),
-('14', 'Mary', 'So fresh', 4 ),
-('15', 'Elijah', 'Cutest Color', 3 ),
-('16', 'Tori', 'My lighter stopped working after two uses!', 1 );
+('16', 'Jennifer', 'Fire!', 5);

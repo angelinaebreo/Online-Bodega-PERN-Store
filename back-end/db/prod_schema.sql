@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS bodega_dev;
-CREATE DATABASE bodega_dev;
-\c bodega_dev;
+DROP DATABASE IF EXISTS d6oc82g8rnpad3;
+CREATE DATABASE d6oc82g8rnpad3;
+\c d6oc82g8rnpad3;
 
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
