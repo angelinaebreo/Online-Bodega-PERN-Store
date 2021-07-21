@@ -1,69 +1,73 @@
-const express = require('express');
-const reviews = express.Router({mergeParams: true});
-const {
-    getAllReviews,
+
+// DEPENDENCIES
+const express = require("express")
+const reviews = express.Router({ mergeParams: true });
+const {  getAllReviews,
     getReview,
     newReview,
     updateReview,
-    deleteReview,
-} = require('../queries/reviews');
+    deleteReview } = require("../queries/reviews")
 
-//routes
-//INDEX
-reviews.get("/", async (res) => {
+// ROUTES
+// index
+reviews.get("/", async (req, res) => {
     try {
-        const allReviews = await getAllReviews();
-        console.log(`controller function call: ${allReviews}`);
-        res.status(200).json(allReviews)
-    }catch (e) {
-        return (e);
-        //res.status(404).json({ error: "Resource not found.", message: e });
+      const { productId } = req.params;
+      const allReviews = await getAllReviews(productId);
+      console.log(`controller function call: ${allReviews}`);
+      res.status(200).json(allReviews);
+    } catch (e) {
+      res.status(404).statusMessage(e);
     }
-})
-//SHOW
-reviews.get("/:id", async (req,res) => {
-    try{
-        const {id} = req.params;
-        const review = await getReview(id);
-        res.status(200).json(review);
-    }catch (e) {
-        return (e);
-    }
-});
+  });
 
-//create
-reviews.post('/', async (req, res) => {
+// show
+reviews.get("/:id", async (req, res) => {
     try {
-        const review = await newReview(req.body);
-        res.status(200).json(review);
-    }catch (e) {
-        return (e);
-       // res.status(404).json({ error: "Resource not found.", message: e });
+      const { productId } = req.params;
+      const { id } = req.params;
+      const review = await getReview(productId, id);
+      res.status(200).json(review);
+    } catch (e) {
+      res.status(404).statusMessage(e);
     }
-});
-
-//update
-reviews.put("/:id", async (req, res) => {
+  });
+  
+// create
+  reviews.post("/", async (req, res) => {
     try {
-        const { id } =req.params;
-        const updatedReview = await updateReview(id, req.body);
-        res.status(200).json(updatedReview);
-    }catch (e) {
-        return (e);
-        //res.status(404).json({ error: "Resource not found.", message: e });
+      const { productId } = req.params;
+      const review = await newReview(productId, req.body);
+      res.status(200).json(review);
+    } catch (e) {
+      res.status(404).statusMessage(e);
     }
-});
-
-//delete
-reviews.delete("/:id", async (req,res) => {
+  });
+  
+ // update
+  reviews.put("/:id", async (req, res) => {
     try {
-    const { id } = req.params;
-    const deletedReview = await deleteReview(id);
-    res.status(200).json(deletedReview);
-    }catch (e) {
-        return (e);
-        //res.status(404).json({ error: "Resource not found.", message: e });
-   }
-});
-
-module.exports = reviews;
+      const { productId } = req.params;
+      const { id } = req.params;
+      const updatedReview = await updateReview(productId, id, req.body);
+      res.status(200).json(updatedReview);
+    } catch (e) {
+      res.status(404).statusMessage(e);
+    }
+  });
+  
+ // delete
+  reviews.delete("/:id", async (req, res) => {
+    try {
+      const { productId } = req.params;
+      const { id } = req.params;
+      const deletedReview = await deleteReview(productId, id);
+      res.status(200).json(deletedReview);
+    } catch (e) {
+      res.status(404).statusMessage(e);
+    }
+  });
+  
+  // EXPORTS
+  module.exports = reviews;
+  

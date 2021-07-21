@@ -4,7 +4,7 @@ const db = require("../db/dbConfig.js");
 const getAllProducts = async () => {
   try {
     const allProducts = await db.any("SELECT * FROM products");
-    console.log("products queries")
+    console.log("products queries");
     return allProducts;
   } catch (err) {
     return err;
@@ -30,7 +30,6 @@ const createProduct = async (product) => {
         product.category,
         product.is_popular,
         product.img
-
       ]
     );
     return newProduct;
@@ -64,7 +63,6 @@ const updateProduct = async (id, product) => {
         product.is_popular,
         product.img,
         id
-
       ]
     );
     return updatedProduct;
