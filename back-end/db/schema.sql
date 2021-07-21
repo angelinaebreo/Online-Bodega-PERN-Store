@@ -4,7 +4,6 @@ CREATE DATABASE bodega_dev;
 
 
 DROP TABLE IF EXISTS products;
-
 CREATE TABLE products (
     id SERIAL PRIMARY KEY, 
     name TEXT, 
@@ -24,4 +23,4 @@ CREATE TABLE reviews (
     product_id INTEGER REFERENCES products (id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS reviews;
+

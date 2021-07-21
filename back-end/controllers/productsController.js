@@ -7,13 +7,13 @@ const {
   getProduct,
   createProduct,
   deleteProduct,
-  updateProduct
+  updateProduct,
 } = require("../queries/products.js");
 
 const {
   ProductNotCreatedError,
   ValidationError,
-  customErrorHandler
+  customErrorHandler,
 } = require("../helper.js");
 
 // const db = require("../db/dbConfig.js");
@@ -60,7 +60,10 @@ const validateProduct = (req, res, next) => {
 // index
 products.get("/", async (req, res) => {
   const allProducts = await getAllProducts();
-  res.status(200).json(allProducts);
+  res.status(200).json({
+    success: true,
+    payload: allProducts,
+  });
 });
 
 //show
@@ -69,12 +72,18 @@ products.get("/:id", async (req, res) => {
   try {
     const product = await getProduct(id);
     if (product.id) {
-      res.status(200).json(product);
+      res.status(200).json({
+        success: true,
+        payload: product,
+      });
     } else {
-      throw `NO item found at index: ${id}`;
+      throw `No product found at index: ${id}`;
     }
   } catch (e) {
-    res.status(404).json({ err: "not found", message: e });
+    res.status(404).json({
+      success: false,
+      payload: e,
+    });
   }
 });
 
@@ -82,15 +91,15 @@ products.get("/:id", async (req, res) => {
 products.post("/", validateProduct, async (req, res, next) => {
   try {
     const product = await createProduct(req.body);
-    console.log(product["id"]);
-    res.status(200).json(product);
-    // if (product["id"]) {
-    //   res.status(200).json(product);
-
-    // } else {
-    //   const msg = `Product not addedd to database: ${JSON.stringify(req.body)}`
-    //   throw new ProductNotCreatedError(msg)
-    // }
+    if (product.id) {
+      res.status(200).json({
+        success: true,
+        payload: product,
+      });
+    } else {
+      const msg = `Product not added to database: ${JSON.stringify(req.body)}`;
+      throw new ProductNotCreatedError(msg);
+    }
   } catch (e) {
     return next(e);
   }
@@ -101,9 +110,12 @@ products.put("/:id", validateProduct, async (req, res, next) => {
   const { id } = req.params;
   try {
     const product = await updateProduct(id, req.body);
-    console.log(`products id ${product}`);
-    if (product["id"]) {
-      res.status(200).json(product);
+
+    if (product.id) {
+      res.status(200).json({
+        success: true,
+        payload: product,
+      });
     } else {
       const msg = `Product not added to database: ${JSON.stringify(req.body)}`;
       throw new ProductNotCreatedError(msg);
@@ -119,7 +131,10 @@ products.delete("/:id", async (req, res, next) => {
   try {
     const deleted = await deleteProduct(id);
     if (deleted.id) {
-      res.status(200).json(deleted);
+      res.status(200).json({
+        success: true,
+        payload: deleted,
+      });
     } else {
       const msg = `Product not deleted from database: ${id}`;
       throw new ProductNotCreatedError(msg);
@@ -129,7 +144,7 @@ products.delete("/:id", async (req, res, next) => {
   }
 });
 
-products.use("/:productId/reviews", reviewsController)
+products.use("/:productId/reviews", reviewsController);
 
 // Error handling
 products.use(customErrorHandler);
