@@ -10,7 +10,10 @@ function Navbar() {
           </Link>
         </li>
 
+
         <li className="divider">&#9830;</li>
+
+        <li className="divider" id="nav-div">&#9830;</li>
 
         <li>
           <Link to="/new" className="nav-links">
