@@ -2,7 +2,7 @@ import React from 'react'
 import Product from './Product'
 
 function Misc({products}) {
-    const misc = products.filter(product => product.category === "Misc")
+    const misc = products.filter(product => product.category === "Mischellaneous")
     return (
         <div className="products-list">
             <ul>

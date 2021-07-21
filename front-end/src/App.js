@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useHistory} from 'react-router-dom'
 import { apiURL } from "./util/apiURL.js";
 import CategoryBanner from "./components/CategoryBanner.js";
 import Navbar from "./components/Navbar.js";
@@ -12,14 +13,16 @@ import Sandwiches from "./components/Sandwiches";
 import Misc from "./components/Misc";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+
 import NewProduct from "./components/NewProduct.js";
 import ProductView from "./components/ProductView.js";
 import EditForm from "./components/EditForm.js";
 
+
 const API = apiURL();
 
 function App() {
-
+  let history = useHistory()
   const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -35,15 +38,49 @@ function App() {
     }
   }, []);
 
-  const deleteProduct = () => {
-
+  const deleteProduct = (id) => {
+    try {
+      axios.delete(`${API}/products/${id}`)
+      .then((response) => {
+        const foo = [...products]
+        foo.splice(
+          products.findIndex((product) => product.id === id),1
+        )
+        setProducts(foo)
+        history.push('/products')
+      })
+    } catch (error) {
+      console.warn('catch',error)
+    }
   }
 
-  const addProduct = () => {
-
+  const addProduct = (product) => {
+    try {
+      axios
+        .post(`${API}/products`, product)
+        .then(response => {
+          setProducts([...products, product])
+          history.push('/products')
+        })
+    } catch (error) {
+      console.warn('catch', error)
+    }
   }
 
-  const updateProduct = () => {
+  const updateProduct = (product,id) => {
+    try {
+      axios
+        .put(`${API}/products/${id}`, product)
+        .then(response => {
+          const index = products.findIndex(product=>product.id === id);
+          const neuVar = [...products]
+          neuVar[index] = product
+          setProducts(neuVar)
+          history.push(`/products/${id}`)
+        })
+    } catch (error) {
+      
+    }
 
   }
 
