@@ -2,7 +2,8 @@
 \c bodega_dev;
 
 INSERT INTO products (name, price, category, is_popular, img) VALUES
-('Pepsi', 1.50, 'Beverage', false, 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'),
+
+('Pepsi', 1.50, 'Beverage', false, 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80' ),
 ('Fanta', 1.00, 'Beverage', false, 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFudGF8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60'),
 ('Hot coffee', 1.25, 'Beverage', true, 'https://images.unsplash.com/photo-1598908314732-07113901949e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29mZmVlJTIwdG8lMjBnb3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60'),
 ('Orange Juice', 2.00, 'Beverage', true, 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8b3JhbmdlJTIwanVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60'),

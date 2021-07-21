@@ -7,13 +7,13 @@ const {
   getProduct,
   createProduct,
   deleteProduct,
-  updateProduct,
+  updateProduct
 } = require("../queries/products.js");
 
 const {
   ProductNotCreatedError,
   ValidationError,
-  customErrorHandler,
+  customErrorHandler
 } = require("../helper.js");
 
 // const db = require("../db/dbConfig.js");

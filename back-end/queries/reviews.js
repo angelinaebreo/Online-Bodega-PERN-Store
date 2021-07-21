@@ -58,13 +58,7 @@ const updateReview = async (productId, id, review) => {
       WHERE id=$4 AND product_id=$5
       RETURNING *
       `,
-      [
-        review.reviewer,
-        review.content,
-        review.rating,
-        id,
-        productId
-      ]
+      [review.reviewer, review.content, review.rating, id, productId]
     );
     return updatedReview;
   } catch (e) {
