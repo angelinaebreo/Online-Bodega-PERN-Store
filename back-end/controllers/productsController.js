@@ -1,6 +1,9 @@
 
 const express = require("express");
-const products = express.Router({ mergeParams: true });
+const products = express.Router();
+
+const reviewsController =  require("./reviewsController.js");
+products.use("/:productId/reviews", reviewsController);
 
 const {
   getAllProducts,
