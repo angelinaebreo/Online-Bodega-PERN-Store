@@ -1,6 +1,7 @@
 
 \c d6oc82g8rnpad3;
 
+DELETE FROM products;
 INSERT INTO products (name, price, category, is_popular, img) VALUES
 
 ('Pepsi', 1.50, 'Beverage', false, 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80' ),
@@ -21,40 +22,41 @@ INSERT INTO products (name, price, category, is_popular, img) VALUES
 ('Lighter', 1.50, 'Mischellaneous', false, 'https://images.unsplash.com/photo-1575908539629-62b3f98d7b3a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bGlnaHRlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60');
 
 
+DELETE FROM reviews;
 INSERT INTO reviews
 (product_id, reviewer, content, rating)
 VALUES
 
-('11', 'Alex', 'My go-to snack!!', 5),
-('1', 'Sasha', 'Pepsi is life', 3),
-('2', 'Evan',  'Peach flavor is bomb', 3),
-('2', 'Tom',  'Light and Sweet. duh', 5),
-('4', 'Juliana', 'Freshly squeezed orange', 5),
-('5', 'David', 'Cheesy and Yummy', 4),
-('6', 'Mr. Mingo', 'NY must have!', 3),
-('7', 'Alison','Bacon, Lettuce, Tomato staple', 4),
-('8', 'Hannah', 'My fave!', 3),
-('9', 'Gabi', 'Munchies', 5),
-('9', 'Jon', 'Blueberry flavor for the win!', 5),
-('10', 'David', 'Big girls dont cry', 5),
-('12', 'Christie', 'Nacho Cheese with a little bit of Spice.', 5),
-('13', 'Melanie', 'It is New York Times, what else is there to say?', 5),
-('14', 'Poppy', 'Non-drowsy', 5),
-('15', 'Francisco', 'Color Black', 5),
-('16', 'Jennifer', 'Fire!', 5),
-('1', 'Randall', 'What is Coca-cola?', 4 ),
-('2', 'Timothy', 'Fanta-stic', 4 ),
-('4', 'Verline', 'Freshly squeeze, yum.', 5),
-('3', 'Tamie', 'My coffee wasnt hot so now it is Iced Coffee', 2 ),
-('5', 'Rupert', 'Go-to breakfast', 5 ),
-('6', 'Arcelia', 'NY must have! But it needs extra cheese', 4 ),
-('7', 'Catherine', 'Who eats a BLT without any mayo??!', 2 ),
-('8', 'Pearline',  'My fave!', 5 ),
-('9', 'Andrew', 'It is very moist', 4 ),
-('10', 'Bryan', 'First they are sour...then they are sweet! Ha!', 5 ),
-('11', 'Marvin', 'You are not you when you are hungry & Im still hungry...', 3),
-('12', 'Helen', 'Nacho Cheese haha get it?', 5 ),
-('13', 'Nolen', 'Have to keep with my New York Times', 5 ),
-('14', 'Mary', 'So fresh', 4 ),
-('15', 'Elijah', 'Cutest Color', 3 ),
-('16', 'Tori', 'My lighter stopped working after two uses!', 1 );
+((SELECT id FROM products WHERE name = 'Pepsi'), 'Randall', 'What is Coca-cola?', 4 ),
+((SELECT id FROM products WHERE name = 'Pepsi'), 'Sasha', 'Pepsi is life', 3),
+((SELECT id FROM products WHERE name = 'Fanta'), 'Timothy', 'Fanta-stic', 4 ),
+((SELECT id FROM products WHERE name = 'Fanta'), 'Evan',  'Peach flavor is bomb', 3),
+((SELECT id FROM products WHERE name = 'Fanta'), 'Tom',  'Light and Sweet. duh', 5),
+((SELECT id FROM products WHERE name = 'Hot coffee'), 'Tamie', 'My coffee wasnt hot so now it is Iced Coffee', 2 ),
+((SELECT id FROM products WHERE name = 'Hot coffee'), 'Poppy', 'Non-drowsy', 5),
+((SELECT id FROM products WHERE name = 'Orange Juice'), 'Juliana', 'Freshly squeezed orange', 5),
+((SELECT id FROM products WHERE name = 'Orange Juice'), 'Verline', 'Freshly squeeze, yum.', 5),
+((SELECT id FROM products WHERE name = 'Bacon, Egg, and Cheese Sandwich'), 'David', 'Cheesy and Yummy', 4),
+((SELECT id FROM products WHERE name = 'Bacon, Egg, and Cheese Sandwich'), 'Rupert', 'Go-to breakfast', 5 ),
+((SELECT id FROM products WHERE name = 'Philly CheeseSteak Sandwich'), 'Arcelia', 'NY must have! But it needs extra cheese', 4 ),
+((SELECT id FROM products WHERE name = 'Philly CheeseSteak Sandwich'), 'Mr. Mingo', 'NY must have!', 3),
+((SELECT id FROM products WHERE name = 'BLT Sandwich'), 'Alison','Bacon, Lettuce, Tomato staple', 4),
+((SELECT id FROM products WHERE name = 'BLT Sandwich'), 'Catherine', 'Who eats a BLT without any mayo??!', 2 ),
+((SELECT id FROM products WHERE name = 'Honey Turkey Hero Sandwich'), 'Hannah', 'My fave!', 3),
+((SELECT id FROM products WHERE name = 'Honey Turkey Hero Sandwich'), 'Pearline',  'I can 10 of them, no joke!', 5 ),
+((SELECT id FROM products WHERE name = 'Brownie'), 'Gabi', 'Munchies', 5),
+((SELECT id FROM products WHERE name = 'Brownie'), 'Andrew', 'It is very moist', 4 ),
+((SELECT id FROM products WHERE name = 'Sour Patch Kids'), 'Jon', 'Blueberry flavor for the win!', 5),
+((SELECT id FROM products WHERE name = 'Sour Patch Kids'), 'David', 'Big girls dont cry', 5),
+((SELECT id FROM products WHERE name = 'Sour Patch Kids'), 'Bryan', 'First they are sour...then they are sweet! Ha!', 5 ),
+((SELECT id FROM products WHERE name = 'Snickers'), 'Marvin', 'You are not you when you are hungry & Im still hungry...', 3),
+((SELECT id FROM products WHERE name = 'Snickers'), 'Alex', 'My go-to snack!!', 5),
+((SELECT id FROM products WHERE name = 'Snickers'), 'Christie', 'Nacho Cheese with a little bit of Spice.', 5),
+((SELECT id FROM products WHERE name = 'New York Times'), 'Melanie', 'It is New York Times, what else is there to say?', 5),
+((SELECT id FROM products WHERE name = 'New York Times'), 'Nolen', 'Have to keep with my New York Times', 5 ),
+((SELECT id FROM products WHERE name = 'Doritos'), 'Jennifer', 'Fire!', 5),
+((SELECT id FROM products WHERE name = 'Doritos'), 'Helen', 'Nacho Cheese haha get it?', 5 ),
+((SELECT id FROM products WHERE name = 'Wrigleys Doublemint Gum'), 'Mary', 'So fresh', 4 ),
+((SELECT id FROM products WHERE name = 'Face Masks Box'), 'Francisco', 'Color Black', 5),
+((SELECT id FROM products WHERE name = 'Face Masks Box'), 'Elijah', 'Cutest Color', 3 ),
+((SELECT id FROM products WHERE name = 'Lighter'), 'Tori', 'My lighter stopped working after two uses!', 1 );
