@@ -12,18 +12,21 @@ function ProductView({deleteProduct}) {
     useEffect(() => {
       axios
         .get(`${API}/products/${id}`)
-        .then((response) => setProduct(response.data))
+        .then((response) => setProduct(response.data.payload))
         .catch((e) => console.log(e));
     }, [id]);
 
     return (
-        <div>
-            <p>{product.name}</p>
-            <img src="product.img" alt={product.name}/>
-            <p>{product.price}</p>
-            <button>Reviews</button>  
+        <div id="show-container">
+              {product.is_popular ? <p className="best">Best Seller 💫</p> : null}
+            <h1 className="prod-row">{product.name}</h1>
+          
+            <span className="prod-row"><img src={product.img} alt={product.name} className="prod-pic "/></span>
+            <p className="prod-row show-price">${product.price}</p>
+            <Link to={`/products/${id}/reviews`}><button>Reviews</button>  </Link>
             <button onClick={() => deleteProduct(id)}>Delete</button>
-            <Link to={`products/${id}/edit`}> <button>Edit</button></Link>
+            <Link to={`/products/${id}/edit`}> <button>Edit</button></Link>
+            <Link to={`/products/`}> <button>Back to Products</button></Link>
         </div>
     )
 }

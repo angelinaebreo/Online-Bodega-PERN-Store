@@ -3,7 +3,7 @@ const db = require("../db/dbConfig.js");
 //index
 const getAllProducts = async () => {
   try {
-    const allProducts = await db.any("SELECT * FROM products");
+    const allProducts = await db.any("SELECT * FROM products ORDER BY name ASC");
     console.log("products queries");
     return allProducts;
   } catch (err) {
