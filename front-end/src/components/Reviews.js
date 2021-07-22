@@ -21,9 +21,12 @@ function Reviews() {
     axios
       .get(`${api}/products/${id}/reviews`)
       .then((response) => {
-        const data = response.data.payload
+        const data = response.data.payload;
 
-        let average = data.reduce((a, b) => { return Number(a) + Number(b.rating);}, 0) / data.length;
+        let average =
+          data.reduce((a, b) => {
+            return Number(a) + Number(b.rating);
+          }, 0) / data.length;
         let stars = "";
         for (let i = 0; i < average; i++) {
           stars += "⭐";
@@ -62,6 +65,7 @@ function Reviews() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     axios.post(`${api}/products/${id}/reviews`, newReview).then((response) => {
       let stars = "";
       for (let i = 0; i < newReview.rating; i++) {
@@ -69,18 +73,19 @@ function Reviews() {
       }
       newReview.stars = stars;
       setReviews([...reviews, newReview]);
+      setReview({ reviewer: "", content: "", rating: 1, product_id: id });
     });
   };
 
   return (
-    <div id="review-container"> 
+    <div id="review-container">
       <div>
         <h1>
           {product.name} {average}
         </h1>
         {product.is_popular ? <p>Best Seller 💫</p> : null}
 
-        <img src={product.img} alt={product.name} className="review-pic"/>
+        <img src={product.img} alt={product.name} className="review-pic" />
       </div>
       <form onSubmit={handleSubmit} id="review-form">
         <label htmlFor="content">Leave a review:</label>
@@ -107,10 +112,12 @@ function Reviews() {
           value={newReview.rating}
           onChange={handleInput}
         />
-        <button type="submit" id="submit-review">Submit Review</button>
+        <button type="submit" id="submit-review">
+          Submit Review
+        </button>
       </form>
-      <h1 id ="reviews">Reviews</h1>
-      <ul >
+      <h1 id="reviews">Reviews</h1>
+      <ul>
         {reviews.map((review) => (
           <li key={review.id} id="review">
             <p>{review.reviewer}</p>
