@@ -20,7 +20,6 @@ function ProductView({deleteProduct}) {
         <div id="show-container">
               {product.is_popular ? <p className="best">Best Seller 💫</p> : null}
             <h1 className="prod-row">{product.name}</h1>
-          
             <span className="prod-row"><img src={product.img} alt={product.name} className="prod-pic "/></span>
             <p className="prod-row show-price">${product.price}</p>
             <Link to={`/products/${id}/reviews`}><button>Reviews</button>  </Link>

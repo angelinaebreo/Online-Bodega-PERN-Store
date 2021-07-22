@@ -105,9 +105,9 @@ function EditForm({ updateProduct }) {
         <br />
         <button type="submit"> Submit </button>
         <br />
-        <Link to={`/products/${id}`} ><button>Back to Product</button></Link>
-
-        {/* <input type="submit" /> */}
+        <Link to={`/products/${id}`}>
+          <button>Back to Product</button>
+        </Link>
       </form>
     </div>
   );
