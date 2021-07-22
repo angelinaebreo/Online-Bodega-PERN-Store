@@ -73,16 +73,16 @@ function Reviews() {
   };
 
   return (
-    <div>
+    <div id="review-container"> 
       <div>
         <h1>
           {product.name} {average}
         </h1>
         {product.is_popular ? <p>Best Seller 💫</p> : null}
 
-        <img src={product.img} alt={product.name} />
+        <img src={product.img} alt={product.name} className="review-pic"/>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="review-form">
         <label htmlFor="content">Leave a review:</label>
         <textarea
           id="content"
@@ -109,9 +109,10 @@ function Reviews() {
         />
         <input type="submit" />
       </form>
-      <ul>
+      <h1 id ="reviews">Reviews</h1>
+      <ul >
         {reviews.map((review) => (
-          <li key={review.id}>
+          <li key={review.id} id="review">
             <p>{review.reviewer}</p>
             <p>{review.stars}</p>
             <p>{review.content}</p>

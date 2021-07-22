@@ -39,8 +39,8 @@ const NewProduct = ({ addProduct }) => {
     addProduct(prod);
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="form-page">
+      <form onSubmit={handleSubmit} className="form">
         <label htmlFor="name">Name:</label>
         <input
           id="name"
@@ -90,7 +90,7 @@ const NewProduct = ({ addProduct }) => {
         />
         <br />
 
-        <input type="submit" />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

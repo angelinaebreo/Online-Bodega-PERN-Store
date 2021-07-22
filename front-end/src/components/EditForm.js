@@ -50,8 +50,8 @@ function EditForm({updateProduct}) {
       updateProduct(product, id)
     };
     return (
-        <div>
-        <form onSubmit={handleSubmit}>
+        <div className="form-page">
+        <form onSubmit={handleSubmit} className="form">
         <label htmlFor="name">Name:</label>
         <input
           id="name"
@@ -97,8 +97,9 @@ function EditForm({updateProduct}) {
           checked={product.is_popular}
         />
         <br />
+        <button type="submit"> Submit </button>
 
-        <input type="submit" />
+        {/* <input type="submit" /> */}
       </form>
             
         </div>
