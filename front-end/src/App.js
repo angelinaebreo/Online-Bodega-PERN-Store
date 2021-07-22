@@ -13,7 +13,6 @@ import Sandwiches from "./components/Sandwiches";
 import Misc from "./components/Misc";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-
 import NewProduct from "./components/NewProduct.js";
 import ProductView from "./components/ProductView.js";
 import EditForm from "./components/EditForm.js";

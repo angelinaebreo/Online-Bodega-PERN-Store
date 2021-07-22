@@ -107,7 +107,7 @@ function Reviews() {
           value={newReview.rating}
           onChange={handleInput}
         />
-        <input type="submit" />
+        <button type="submit" id="submit-review">Submit Review</button>
       </form>
       <h1 id ="reviews">Reviews</h1>
       <ul >
