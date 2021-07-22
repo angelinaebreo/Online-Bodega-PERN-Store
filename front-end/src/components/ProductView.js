@@ -12,13 +12,14 @@ function ProductView({deleteProduct}) {
     useEffect(() => {
       axios
         .get(`${API}/products/${id}`)
-        .then((response) => setProduct(response.data))
+        .then((response) => setProduct(response.data.payload))
         .catch((e) => console.log(e));
     }, [id]);
 
     return (
         <div>
             <p>{product.name}</p>
+            {product.is_popular ? <p className="prod-row">Best Seller 💫</p> : null}
             <img src={product.img} alt={product.name}/>
             <p>{product.price}</p>
             <Link to={`/products/${id}/reviews`}><button>Reviews</button>  </Link>

@@ -2,7 +2,7 @@ import React from 'react'
 import Product from './Product'
 
 function Sandwiches({products}) {
-    const sandwiches = products.filter(product => product.category === "Sandwhich")
+    const sandwiches = products.filter(product => product.category === "Sandwich")
     return (
         <div className="products-list">
             <ul>

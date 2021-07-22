@@ -21,7 +21,7 @@ function Reviews() {
     axios
       .get(`${api}/products/${id}/reviews`)
       .then((response) => {
-        const { data } = response;
+        const data = response.data.payload
 
         let average = data.reduce((a, b) => { return Number(a) + Number(b.rating);}, 0) / data.length;
         let stars = "";
@@ -47,7 +47,7 @@ function Reviews() {
     try {
       axios.get(`${api}/products/${id}`).then(
         (response) => {
-          setProduct(response.data);
+          setProduct(response.data.payload);
         },
         (error) => console.log("get", error)
       );

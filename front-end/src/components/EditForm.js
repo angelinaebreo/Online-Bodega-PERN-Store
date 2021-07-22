@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from "react-router-dom"
 import axios from "axios"
@@ -20,6 +21,11 @@ function EditForm({updateProduct}) {
     const handleTextChange = (event) => {
       setProduct({ ...product, [event.target.id]: event.target.value });
     };
+
+    const handleNumChange = (e) => {
+      let price = Number(e.target.value)
+      setProduct({...product, price: price})
+    }
   
     const handleCheckboxChange = () => {
       setProduct({ ...product, is_popular: !product.is_popular});
@@ -31,7 +37,10 @@ function EditForm({updateProduct}) {
   
     useEffect(() => {
       axios.get(`${API}/products/${id}`).then(
-        (response) => setProduct(response.data),
+        (response) => {
+          const { payload } = response.data
+          payload.price = Number(payload.price)
+          setProduct(payload)},
         (error) => history.push(`/404`)
       );
     }, [id, history]);
@@ -55,10 +64,10 @@ function EditForm({updateProduct}) {
         <label htmlFor="price">Price:</label>
         <input
           id="price"
-          type="text"
+          type="number"
           value={product.price}
           placeholder="Price"
-          onChange={handleTextChange}
+          onChange={handleNumChange}
         />
         <label htmlFor="category">Category:</label>
         <select id="category" value={product.category} onChange={selectChange} >
