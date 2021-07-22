@@ -4,8 +4,8 @@ import Product from './Product'
 function Sandwiches({products}) {
     const sandwiches = products.filter(product => product.category === "Sandwich")
     return (
-        <div className="products-list">
-            <ul>
+        <div className="products-container">
+        <ul  className="products-list">
                 {sandwiches.map(sandwich => <li key={sandwich.id}> <Product product={sandwich}/> </li>)}
             </ul>
         </div>

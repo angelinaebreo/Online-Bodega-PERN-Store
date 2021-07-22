@@ -57,21 +57,22 @@ function App() {
   const addProduct = (product) => {
     try {
       axios.post(`${API}/products`, product).then((response) => {
-        let array = [...products, product];
-        let sort = array.sort((a, b) => {
-          let a2 = a.name.toLowerCase();
-          let b2 = b.name.toLowerCase;
+        // let array = [...products, product];
+        // let sort = array.sort((a, b) => {
+        //   let a2 = a.name.toLowerCase();
+        //   let b2 = b.name.toLowerCase;
 
-          if (a2 < b2) {
-            return -1;
-          }
-          if (a2 > b2) {
-            return 1;
-          }
-          return 0;
-        });
+        //   if (a2 < b2) {
+        //     return -1;
+        //   }
+        //   if (a2 > b2) {
+        //     return 1;
+        //   }
+        //   return 0;
+        // });
 
-        setProducts(sort);
+        // setProducts(sort);
+        updateState()
         history.push("/products");
       });
     } catch (error) {
@@ -95,6 +96,19 @@ function App() {
       console.warn("catch", error);
     }
   };
+
+  const updateState = () => {
+    try {
+      axios.get(`${API}/products`).then(
+        (response) => {
+          setProducts(response.data.payload);
+        },
+        (error) => console.log("get", error)
+      );
+    } catch (error) {
+      console.warn("catch", error);
+    }
+  }
 
   return (
     <div className="app">
