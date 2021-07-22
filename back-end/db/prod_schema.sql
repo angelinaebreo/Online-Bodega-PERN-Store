@@ -10,7 +10,6 @@ CREATE TABLE products (
     category TEXT, 
     is_popular BOOLEAN, 
     img TEXT
-   
 );
 
 DROP TABLE IF EXISTS reviews;
