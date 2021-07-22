@@ -20,7 +20,7 @@
 1. A user can visit this app on the internet that uses data from the express API
 1. A user can share the link to the new page (once my apps are hosted online) and someone else will be able to see a specific view
 1. A user can view this app on a desktop or phone and it is easy to read/use (the app has some responsive design)
-1. **Bonus** A user can sort products (implemented in front-end)
+1. **Bonus** A user can filter products (implemented in front-end)
 1. **Bonus** A user can, from the detailed view, read and post product reviews. 
 
 
