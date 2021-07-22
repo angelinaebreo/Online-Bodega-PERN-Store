@@ -68,9 +68,11 @@ function EditForm({updateProduct}) {
           value={product.price}
           placeholder="Price"
           onChange={handleNumChange}
+          required
         />
         <label htmlFor="category">Category:</label>
-        <select id="category" value={product.category} onChange={selectChange} >
+        <select id="category" value={product.category} onChange={selectChange}   required>
+        <option></option>
         <option value="Beverage">Beverages</option>
   <option value="Misc">Miscellaneous</option>
   <option value="Sandwich">Sandwiches</option>

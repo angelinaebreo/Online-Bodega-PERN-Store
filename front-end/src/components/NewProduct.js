@@ -57,13 +57,16 @@ const NewProduct = ({ addProduct }) => {
           value={product.price}
           placeholder="Price"
           onChange={handleNum_input}
+          required
         />
         <label htmlFor="category">Category:</label>
         <select
           id="category"
           value={product.category}
           onChange={handleChange_category}
+          required
         >
+            <option></option>
           <option value="Beverage">Beverages</option>
           <option value="Misc">Miscellaneous</option>
           <option value="Sandwich">Sandwiches</option>
