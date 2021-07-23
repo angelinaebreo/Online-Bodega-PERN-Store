@@ -410,6 +410,10 @@ h1 {
   .door-container button:hover {
     transform: scale(1.1);
   }
+
+  .review-pic{
+    width: 200px;
+  }
 }
 
 @media screen and (max-width: 511px) {
@@ -435,7 +439,12 @@ h1 {
     height: 60px;
   }
 
+  .review-pic{
+    width: 150px;
+  }
+
   #show-container button{
     margin-bottom: 10px;
   }
 }
+

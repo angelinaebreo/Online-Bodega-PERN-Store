@@ -24,6 +24,11 @@
 1. **Bonus** A user can, from the detailed view, read and post product reviews. 
 
 
+## Back-end Routes
+
+![Back-end Routes image](./assets/backEndRoutes.jpeg)
+
+
 
 
 
