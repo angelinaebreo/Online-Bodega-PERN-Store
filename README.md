@@ -24,6 +24,15 @@
 1. **Bonus** A user can, from the detailed view, read and post product reviews. 
 
 
+## Back-end Routes
+
+![Back-end Routes image](./assets/backEndRoutes.jpeg)
+
+For more information please visit 
+[Online Bodega API documentation](https://documenter.getpostman.com/view/16788389/TzsZq86P)
+
+
+
 
 
 
