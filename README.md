@@ -28,6 +28,10 @@
 
 ![Back-end Routes image](./assets/backEndRoutes.jpeg)
 
+For more information please visit 
+[Online Bodega API documentation](https://documenter.getpostman.com/view/16788389/TzsZq86P)
+
+
 
 
 
