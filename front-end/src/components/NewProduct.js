@@ -35,7 +35,6 @@ const NewProduct = ({ addProduct }) => {
       ...product,
       name: product.name[0].toUpperCase() + product.name.slice([1]),
     };
-    console.log(prod);
     addProduct(prod);
   };
   return (
@@ -68,7 +67,7 @@ const NewProduct = ({ addProduct }) => {
         >
             <option></option>
           <option value="Beverage">Beverages</option>
-          <option value="Misc">Miscellaneous</option>
+          <option value="Mischellaneous">Miscellaneous</option>
           <option value="Sandwich">Sandwiches</option>
           <option value="Snacks">Snacks</option>
         </select>
