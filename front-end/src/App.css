@@ -176,12 +176,11 @@ h1 {
 }
 
 .product button {
-  border: 2px solid green;
   background-color: green;
   border-radius: 8px;
   color: white;
   font-weight: 700;
-  padding: 1px;
+  padding: 2px;
 }
 
 .prod-row {
@@ -235,6 +234,8 @@ h1 {
   width: 150px;
   font-size: large;
   color: white;
+  border-radius: 8px;
+  margin-top: 4px;
 }
 
 #review-container {
@@ -244,12 +245,17 @@ h1 {
   height: 100%;
 }
 
+#review-container ul{
+  margin-bottom: 20px;
+}
+
 #review-form {
   background-color: rgb(255, 255, 255, 0.8);
   margin-top: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #reviews {
@@ -259,7 +265,17 @@ h1 {
 
 #review {
   background-color: rgb(0, 128, 0, 0.4);
-  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+}
+
+#review p{
+  margin-bottom: 2px;
+}
+
+#review button{
+  margin-top: 5px;
 }
 
 .review-pic {
@@ -272,14 +288,53 @@ h1 {
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px;
+
+}
+
+
+#review-form textarea{
+  width: 80%;
+}
+
+#reviewer{
+  width: 50%;
+}
+
+#rating{
+  width: 15%;
 }
 
 #submit-review {
   color: white;
   background-color: red;
   border-radius: 8px;
-  border: 0;
   font-weight: 700;
+  width: 50%;
+}
+
+
+.review-button{
+  color: white;
+  background-color: green;
+  width: 150px;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-weight: 700;
+}
+.sub-review-button{
+  margin-left: 5px;
+  color: white;
+  background-color: green;
+  padding: 2px;
+  border-radius: 8px;
+}
+.reviewer{
+  background-color: rgb(0, 128, 0, 0.5);
+}
+
+.edit-input{
+  margin-top: 10px;
+  width:300px
 }
 
 .form-page {
@@ -297,6 +352,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .form label {
@@ -313,12 +370,14 @@ h1 {
 }
 
 .form button {
-  border: 0;
   background-color: red;
   padding: 10px;
   color: white;
   font-weight: 700;
+  border-radius: 8px;
 }
+
+
 
 @media screen and (max-width: 1080px) {
   .products-list {
@@ -427,6 +486,9 @@ h1 {
     grid-template-columns: 250px;
     width: 100%;
   }
+  .sub-review-button{
+    margin-left: 0px;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -446,5 +508,7 @@ h1 {
   #show-container button{
     margin-bottom: 10px;
   }
+
+
 }
 

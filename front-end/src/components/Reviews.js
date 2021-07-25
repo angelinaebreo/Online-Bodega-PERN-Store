@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
+import EditButton from "./EditButton";
 
 const api = apiURL();
 
@@ -22,57 +23,85 @@ function Reviews() {
       .get(`${api}/products/${id}/reviews`)
       .then((response) => {
         const data = response.data.payload;
-
-        let average =
-          data.reduce((a, b) => {
-            return Number(a) + Number(b.rating);
-          }, 0) / data.length;
-        let stars = "";
-        for (let i = 0; i < average; i++) {
-          stars += "⭐";
-        }
-        setAverage(stars);
-
-        let dataCopy = [...data];
-        for (let point of dataCopy) {
-          let stars = "";
-          for (let i = 0; i < point.rating; i++) {
-            stars += "⭐";
-          }
-          point.stars = stars;
-        }
-        setReviews(dataCopy);
+        setStars(data);
       })
       .catch((e) => console.log(e));
   }, [id]);
 
   useEffect(() => {
-    try {
-      axios.get(`${api}/products/${id}`).then(
+    axios
+      .get(`${api}/products/${id}`)
+      .then(
         (response) => {
           setProduct(response.data.payload);
         },
         (error) => console.log("get", error)
-      );
-    } catch (error) {
-      console.warn("catch", error);
-    }
+      )
+      .catch((e) => console.log(e));
   }, [id]);
+
+  const setStars = (data) => {
+    let average =
+      data.reduce((a, b) => {
+        return Number(a) + Number(b.rating);
+      }, 0) / data.length;
+    let stars = "";
+    for (let i = 0; i < average; i++) {
+      stars += "⭐";
+    }
+    setAverage(stars);
+
+    let dataCopy = [...data];
+    for (let point of dataCopy) {
+      let stars = "";
+      for (let i = 0; i < point.rating; i++) {
+        stars += "⭐";
+      }
+      point.stars = stars;
+    }
+
+    setReviews(dataCopy);
+  };
 
   const handleInput = (event) => {
     setReview({ ...newReview, [event.target.id]: event.target.value });
+  };
+
+  const handleUpdate = (index, edited, reviewId) => {
+    axios
+      .put(`${api}/products/${id}/reviews/${reviewId}`, edited)
+      .then((response) => {
+        const reviewsCopy = [...reviews];
+        reviewsCopy[index] = edited;
+        setReviews(reviewsCopy);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const handleDelete = (index, reviewId) => {
+    axios
+      .delete(`${api}/products/${id}/reviews/${reviewId}`)
+      .then((response) => {
+        const reviewsCopy = [...reviews];
+        reviewsCopy.splice(index, 1);
+        setReviews(reviewsCopy);
+      })
+      .catch((e) => console.log(e));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     axios.post(`${api}/products/${id}/reviews`, newReview).then((response) => {
-      let stars = "";
-      for (let i = 0; i < newReview.rating; i++) {
-        stars += "⭐";
-      }
-      newReview.stars = stars;
-      setReviews([...reviews, newReview]);
+      axios
+        .get(`${api}/products/${id}/reviews`)
+        .then((response) => {
+          const data = response.data.payload;
+          setStars(data);
+          setReviews(response.data.payload);
+        })
+        .catch((e) => console.log(e));
+
       setReview({ reviewer: "", content: "", rating: 1, product_id: id });
     });
   };
@@ -118,11 +147,25 @@ function Reviews() {
       </form>
       <h1 id="reviews">Reviews</h1>
       <ul>
-        {reviews.map((review) => (
+        {reviews.map((review, index) => (
           <li key={review.id} id="review">
-            <p>{review.reviewer}</p>
+            <p className="reviewer">{review.reviewer}</p>
             <p>{review.stars}</p>
             <p>{review.content}</p>
+            <div>
+              <EditButton
+                handleUpdate={handleUpdate}
+                review={review}
+                index={index}
+                id={review.id}
+              />
+              <button
+                onClick={() => handleDelete(index, review.id)}
+                className="review-button"
+              >
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>

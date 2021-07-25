@@ -69,10 +69,7 @@ function App() {
       axios.put(`${API}/products/${id}`, product).then((response) => {
         const neuVar = [...products];
         const index = neuVar.findIndex((product) => product.id === Number(id));
-
-        console.log(index, neuVar);
         neuVar[index] = product;
-
         setProducts(neuVar);
         history.push(`/products/${id}`);
       });
