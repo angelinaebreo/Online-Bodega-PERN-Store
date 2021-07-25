@@ -2,7 +2,6 @@ import React from "react";
 import Product from "./Product.js";
 
 function Products  ({ products }) {
-
   return (
     <div>
       <ul className="products-list">
