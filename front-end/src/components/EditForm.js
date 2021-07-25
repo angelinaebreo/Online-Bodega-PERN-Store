@@ -73,7 +73,7 @@ function EditForm({ updateProduct }) {
         <label htmlFor="category">Category:</label>
         <select
           id="category"
-          value={product.category}
+          value={product.category === "Mischellaneous" ? "Misc" : ""}
           onChange={selectChange}
           required
         >
