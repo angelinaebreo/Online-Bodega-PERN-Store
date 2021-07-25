@@ -243,6 +243,7 @@ h1 {
   font-weight: 700;
   width: 70%;
   height: 100%;
+  background-color: rgb(0, 128, 0, 0.4);
 }
 
 #review-container ul{
@@ -250,7 +251,7 @@ h1 {
 }
 
 #review-form {
-  background-color: rgb(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255, 0.6);
   margin-top: 20px;
   padding: 20px;
   display: flex;
@@ -291,7 +292,6 @@ h1 {
 
 }
 
-
 #review-form textarea{
   width: 80%;
 }
@@ -321,20 +321,26 @@ h1 {
   margin-right: 10px;
   font-weight: 700;
 }
-.sub-review-button{
-  margin-left: 5px;
-  color: white;
-  background-color: green;
-  padding: 2px;
-  border-radius: 8px;
-}
+
 .reviewer{
   background-color: rgb(0, 128, 0, 0.5);
 }
 
+.review-label{
+margin-right: 3px;
+}
+
 .edit-input{
   margin-top: 10px;
+  margin-bottom: 10px;
   width:300px
+}
+
+#edit-review-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  align-items: center;
 }
 
 .form-page {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
-import EditButton from "./EditButton";
+import EditReview from "./EditReview";
 
 const api = apiURL();
 
@@ -71,8 +71,25 @@ function Reviews() {
     axios
       .put(`${api}/products/${id}/reviews/${reviewId}`, edited)
       .then((response) => {
+        let stars = "";
+        for (let i = 0; i < edited.rating; i++) {
+          stars += "⭐";
+        }
+        edited.stars = stars;
         const reviewsCopy = [...reviews];
         reviewsCopy[index] = edited;
+
+        let average =
+          reviewsCopy.reduce((a, b) => {
+            return Number(a) + Number(b.rating);
+          }, 0) / reviewsCopy.length;
+
+        stars = "";
+        for (let i = 0; i < average; i++) {
+          stars += "⭐";
+        }
+        setAverage(stars);
+
         setReviews(reviewsCopy);
       })
       .catch((e) => console.log(e));
@@ -112,7 +129,7 @@ function Reviews() {
         <h1>
           {product.name} {average}
         </h1>
-        {product.is_popular ? <p>Best Seller 💫</p> : null}
+        {product.is_popular ? <p className="best">Best Seller 💫</p> : null}
 
         <img src={product.img} alt={product.name} className="review-pic" />
       </div>
@@ -153,7 +170,7 @@ function Reviews() {
             <p>{review.stars}</p>
             <p>{review.content}</p>
             <div>
-              <EditButton
+              <EditReview
                 handleUpdate={handleUpdate}
                 review={review}
                 index={index}
