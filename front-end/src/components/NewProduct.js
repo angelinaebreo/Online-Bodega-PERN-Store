@@ -34,7 +34,7 @@ const NewProduct = ({ addProduct }) => {
     let prod = {
       ...product,
       name: product.name[0].toUpperCase() + product.name.slice([1]),
-    };
+    }; 
     addProduct(prod);
   };
   return (
@@ -65,7 +65,7 @@ const NewProduct = ({ addProduct }) => {
           onChange={handleChange_category}
           required
         >
-            <option></option>
+          <option></option>
           <option value="Beverage">Beverages</option>
           <option value="Mischellaneous">Miscellaneous</option>
           <option value="Sandwich">Sandwiches</option>
